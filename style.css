@@ -12,12 +12,14 @@
 
 *{ box-sizing: border-box; }
 html{ scroll-behavior: smooth; }
+
 body{
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: radial-gradient(1200px 600px at 20% 10%, rgba(74,163,255,.18), transparent 60%) ,
-              radial-gradient(900px 500px at 80% 20%, rgba(160,90,255,.14), transparent 55%),
-              var(--bg);
+  background:
+    radial-gradient(1200px 600px at 20% 10%, rgba(74,163,255,.18), transparent 60%),
+    radial-gradient(900px 500px at 80% 20%, rgba(160,90,255,.14), transparent 55%),
+    var(--bg);
   color: var(--text);
 }
 
@@ -29,6 +31,7 @@ p{ color: var(--muted); line-height: 1.6; }
   margin: 0 auto;
 }
 
+/* NAV */
 .nav{
   position: sticky;
   top: 0;
@@ -50,7 +53,6 @@ p{ color: var(--muted); line-height: 1.6; }
   align-items: center;
   gap: 10px;
   font-weight: 700;
-  letter-spacing: .2px;
 }
 
 .badge{
@@ -76,23 +78,20 @@ p{ color: var(--muted); line-height: 1.6; }
   color: var(--muted);
   padding: 8px 12px;
   border-radius: 10px;
-  transition: background .15s ease, color .15s ease, box-shadow .15s ease;
 }
 
 .menu a:hover{
   color: var(--text);
   background: rgba(255,255,255,.08);
-  box-shadow: 0 0 0 3px rgba(74,163,255,.12);
 }
 
+/* SEÇÕES */
 .section{
   padding: 88px 0;
-  scroll-margin-top: 80px; /* compensa o menu fixo */
+  scroll-margin-top: 80px;
 }
 
-.hero{
-  padding-top: 56px;
-}
+.hero{ padding-top: 56px; }
 
 .hero-grid{
   display: grid;
@@ -104,12 +103,16 @@ p{ color: var(--muted); line-height: 1.6; }
 .h1{
   font-size: clamp(36px, 5vw, 56px);
   line-height: 1.05;
-  margin: 0 0 14px 0;
+  margin-bottom: 14px;
+}
+
+.h2{
+  font-size: 28px;
+  margin-bottom: 12px;
 }
 
 .lead{
   font-size: 16px;
-  margin: 0 0 22px 0;
   max-width: 54ch;
 }
 
@@ -117,7 +120,7 @@ p{ color: var(--muted); line-height: 1.6; }
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 18px 0 26px 0;
+  margin: 18px 0 26px;
 }
 
 .pill{
@@ -131,10 +134,11 @@ p{ color: var(--muted); line-height: 1.6; }
 
 .cta{
   display: flex;
-  flex-wrap: wrap;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
+/* BOTÕES */
 .btn{
   display: inline-flex;
   align-items: center;
@@ -143,24 +147,7 @@ p{ color: var(--muted); line-height: 1.6; }
   border-radius: 12px;
   border: 1px solid var(--border);
   background: rgba(255,255,255,.05);
-  color: var(--text);
   font-size: 14px;
-  transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
-}
-
-.btn:hover{
-  background: rgba(255,255,255,.10);
-  border-color: rgba(74,163,255,.45);
-  box-shadow:
-    0 0 0 3px rgba(74,163,255,.14),
-    0 8px 24px rgba(74,163,255,.15);
-  transform: translateY(-1px);
-}
-
-.btn:focus-visible{
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(74,163,255,.22);
-  border-color: rgba(74,163,255,.45);
 }
 
 .btn.primary{
@@ -168,6 +155,7 @@ p{ color: var(--muted); line-height: 1.6; }
   border-color: rgba(74,163,255,.35);
 }
 
+/* CARDS */
 .card{
   background: rgba(255,255,255,.04);
   border: 1px solid var(--border);
@@ -179,10 +167,6 @@ p{ color: var(--muted); line-height: 1.6; }
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 28px;
-  border: 2px solid rgba(74,163,255,.35);
-  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-  display: grid;
-  place-items: center;
   overflow: hidden;
 }
 
@@ -192,6 +176,7 @@ p{ color: var(--muted); line-height: 1.6; }
   object-fit: cover;
 }
 
+/* GRID */
 .grid-2{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -204,56 +189,39 @@ p{ color: var(--muted); line-height: 1.6; }
   gap: 18px;
 }
 
+/* TEXTO */
 .kicker{
   color: var(--accent);
   font-weight: 700;
   letter-spacing: .12em;
   font-size: 12px;
   text-transform: uppercase;
-  margin-bottom: 10px;
 }
 
-.h2{
-  font-size: 28px;
-  margin: 0 0 12px 0;
-}
+.small{ font-size: 14px; }
 
-.small{
-  font-size: 14px;
-}
-
-.footer{
-  padding: 26px 0 44px 0;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* ============================================================
-   BLOCO NOVO — IMAGEM DAS EXPERIÊNCIAS (corrige “card gigante”)
-   Use class="experience-img" na <img> do workshop
-   ============================================================ */
+/* IMAGENS DAS EXPERIÊNCIAS */
 .experience-img{
   width: 100%;
   height: auto;
-
-  /* remove o limitador de altura que “dá cara de corte” */
-  max-height: none;
-
-  /* força o comportamento mesmo se algum estilo antigo estiver “vencendo” */
-  object-fit: contain !important;
-
   border-radius: 12px;
   margin: 12px 0;
   display: block;
 }
 
+/* FOOTER */
+.footer{
+  padding: 26px 0 44px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--muted);
+}
 
+/* RESPONSIVO */
 @media (max-width: 900px){
-  .hero-grid{ grid-template-columns: 1fr; }
-  .grid-3{ grid-template-columns: 1fr; }
-  .grid-2{ grid-template-columns: 1fr; }
-
-  /* deixa ainda mais compacto no mobile */
-  .experience-img{ max-height: 180px; }
+  .hero-grid,
+  .grid-2,
+  .grid-3{
+    grid-template-columns: 1fr;
+  }
 }
