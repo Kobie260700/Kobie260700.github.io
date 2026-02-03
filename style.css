@@ -234,15 +234,20 @@ p{ color: var(--muted); line-height: 1.6; }
    Use class="experience-img" na <img> do workshop
    ============================================================ */
 .experience-img{
-  width: 100%;
+  max-width: 100%;
   max-height: 220px;
-  object-fit: contain;              /* ✅ não corta */
-  background: rgba(255,255,255,.03);/* fundo elegante */
-  padding: 6px;                     /* respiro */
+
+  width: auto;          /* ✅ não força 100% */
+  height: auto;         /* ✅ mantém proporção real */
+
+  object-fit: contain;  /* ✅ nunca corta */
+  background: rgba(255,255,255,.03);
+  padding: 6px;
   border-radius: 12px;
-  margin: 12px 0;
-  opacity: 0.95;
+
   display: block;
+  margin: 12px auto;    /* centraliza quando width vira auto */
+  opacity: 0.95;
 }
 
 
