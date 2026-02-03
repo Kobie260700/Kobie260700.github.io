@@ -235,12 +235,16 @@ p{ color: var(--muted); line-height: 1.6; }
    ============================================================ */
 .experience-img{
   width: 100%;
-  max-height: 220px;      /* ajuste para 180px se quiser menor */
-  object-fit: cover;      /* corta sem distorcer */
+  max-height: 220px;
+  object-fit: contain;              /* ✅ não corta */
+  background: rgba(255,255,255,.03);/* fundo elegante */
+  padding: 6px;                     /* respiro */
   border-radius: 12px;
   margin: 12px 0;
   opacity: 0.95;
+  display: block;
 }
+
 
 @media (max-width: 900px){
   .hero-grid{ grid-template-columns: 1fr; }
