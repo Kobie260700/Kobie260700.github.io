@@ -147,6 +147,13 @@ p{ color: var(--muted); line-height: 1.6; }
   transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
 }
 
+.btn:hover{
+  background: rgba(255,255,255,.10);
+  border-color: rgba(74,163,255,.35);
+  box-shadow: 0 0 0 3px rgba(74,163,255,.12);
+  transform: translateY(-1px);
+}
+
 
 .btn.primary{
   background: rgba(74,163,255,.18);
