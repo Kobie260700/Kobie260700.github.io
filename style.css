@@ -235,15 +235,17 @@ p{ color: var(--muted); line-height: 1.6; }
    ============================================================ */
 .experience-img{
   width: 100%;
-  max-width: 520px;     /* ✅ controla o “tamanho” sem cortar */
-  height: auto;         /* ✅ mantém proporção, nunca corta */
+  height: auto;
+
+  /* remove o limitador de altura que “dá cara de corte” */
+  max-height: none;
+
+  /* força o comportamento mesmo se algum estilo antigo estiver “vencendo” */
+  object-fit: contain !important;
 
   border-radius: 12px;
-  margin: 12px auto;    /* ✅ centraliza */
+  margin: 12px 0;
   display: block;
-
-  /* opcional: se quiser uma borda suave */
-  border: 1px solid rgba(255,255,255,.10);
 }
 
 
