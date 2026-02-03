@@ -154,6 +154,12 @@ p{ color: var(--muted); line-height: 1.6; }
   transform: translateY(-1px);
 }
 
+.btn:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(74,163,255,.22);
+  border-color: rgba(74,163,255,.45);
+}
+
 
 .btn.primary{
   background: rgba(74,163,255,.18);
