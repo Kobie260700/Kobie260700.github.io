@@ -309,7 +309,7 @@ p{ color: var(--muted); line-height: 1.6; }
   object-fit: contain;
 
   opacity: .75;
-  filter: grayscale(100%) saturate(60%);
+  
   transition:
     opacity .18s ease,
     filter .18s ease,
