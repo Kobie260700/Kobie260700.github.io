@@ -183,12 +183,27 @@ p{ color: var(--muted); line-height: 1.6; }
 }
 
 /* CARDS */
+
 .card{
   background: rgba(255,255,255,.04);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px;
+
+  transition:
+    background .15s ease,
+    border-color .15s ease,
+    box-shadow .15s ease;
 }
+
+.card:hover{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(74,163,255,.30);
+  box-shadow:
+    0 0 0 2px rgba(74,163,255,.10),
+    0 6px 18px rgba(0,0,0,.25);
+}
+
 
 .avatar{
   width: 100%;
