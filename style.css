@@ -267,3 +267,75 @@ p{ color: var(--muted); line-height: 1.6; }
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================
+   EXPERIÊNCIAS — CARROSSEL SOFT (DESKTOP) + STACK (MOBILE)
+   Cole no final do style.css
+   ============================================================ */
+
+#experiencias .exp-carousel{
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+#experiencias .exp-carousel > .card{
+  flex: 0 0 calc((100% - 18px) / 2); /* 2 cards visíveis no desktop */
+  scroll-snap-align: start;
+
+  /* lift hover */
+  transition:
+    transform .18s ease,
+    background .15s ease,
+    border-color .15s ease,
+    box-shadow .15s ease;
+  will-change: transform;
+}
+
+#experiencias .exp-carousel > .card:hover{
+  transform: translateY(-6px);
+}
+
+/* Barra de scroll mais discreta (Chrome/Edge/Safari) */
+#experiencias .exp-carousel::-webkit-scrollbar{
+  height: 10px;
+}
+#experiencias .exp-carousel::-webkit-scrollbar-track{
+  background: rgba(255,255,255,.05);
+  border-radius: 999px;
+}
+#experiencias .exp-carousel::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.16);
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,.05);
+}
+#experiencias .exp-carousel::-webkit-scrollbar-thumb:hover{
+  background: rgba(255,255,255,.22);
+}
+
+/* Acessibilidade: foco via TAB também dá “lift” */
+#experiencias .exp-carousel > .card:focus-within{
+  transform: translateY(-4px);
+  box-shadow: 0 0 0 4px rgba(74,163,255,.18);
+  border-color: rgba(74,163,255,.40);
+}
+
+/* RESPONSIVO: no mobile vira stack normal */
+@media (max-width: 900px){
+  #experiencias .exp-carousel{
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  #experiencias .exp-carousel > .card{
+    flex: initial;
+    transform: none;
+  }
+}
+
