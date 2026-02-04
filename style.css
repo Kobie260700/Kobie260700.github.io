@@ -341,8 +341,9 @@ p{ color: var(--muted); line-height: 1.6; }
   box-shadow:
     0 0 0 3px rgba(74,163,255,.18),
     0 6px 18px rgba(0,0,0,.25);
-  transform: scale(1.05);
+  transform: translateY(-50%) scale(1.05);
 }
+
 
 /* Agora SEMPRE visíveis */
 #experiencias .exp-arrow.left{
