@@ -295,6 +295,9 @@ p{ color: var(--muted); line-height: 1.6; }
   place-items: center;
 
   box-shadow: 0 10px 30px rgba(0,0,0,.18);
+   position: relative;     /* ✅ já tem */
+  overflow: visible;      /* 🔥 ESSENCIAL */
+  z-index: 1;             /* 🔥 ESSENCIAL */
   transition:
     transform .18s ease,
     background .18s ease,
