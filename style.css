@@ -342,6 +342,43 @@ p{ color: var(--muted); line-height: 1.6; }
   .tool-card{ width: 86px; height: 70px; }
 }
 
+/* ============================================================
+   TOOLTIP — NOME DA FERRAMENTA
+   ============================================================ */
+
+.tool-card{
+  position: relative; /* ESSENCIAL para o tooltip */
+}
+
+.tool-card::after{
+  content: attr(data-label);
+  position: absolute;
+
+  bottom: -34px;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+
+  background: rgba(15,22,35,.95);
+  color: var(--text);
+  font-size: 12px;
+  padding: 6px 10px;
+
+  border-radius: 8px;
+  border: 1px solid var(--border);
+
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+
+  transition:
+    opacity .15s ease,
+    transform .15s ease;
+}
+
+.tool-card:hover::after{
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 
 /* ============================================================
    EXPERIÊNCIAS — CARROSSEL + SETAS
