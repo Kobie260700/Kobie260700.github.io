@@ -31,7 +31,10 @@ p{ color: var(--muted); line-height: 1.6; }
   margin: 0 auto;
 }
 
-/* NAV */
+/* ============================================================
+   NAV
+   ============================================================ */
+
 .nav{
   position: sticky;
   top: 0;
@@ -78,20 +81,19 @@ p{ color: var(--muted); line-height: 1.6; }
   color: var(--muted);
   padding: 8px 12px;
   border-radius: 10px;
-
-  /* ✅ ADICIONADO (do CSS antigo): transição suave + glow */
   transition: background .15s ease, color .15s ease, box-shadow .15s ease;
 }
 
 .menu a:hover{
   color: var(--text);
   background: rgba(255,255,255,.08);
-
-  /* ✅ ADICIONADO (do CSS antigo): brilho ao passar mouse */
   box-shadow: 0 0 0 3px rgba(74,163,255,.12);
 }
 
-/* SEÇÕES */
+/* ============================================================
+   SEÇÕES
+   ============================================================ */
+
 .section{
   padding: 88px 0;
   scroll-margin-top: 80px;
@@ -122,6 +124,20 @@ p{ color: var(--muted); line-height: 1.6; }
   max-width: 54ch;
 }
 
+.kicker{
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: .12em;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.small{ font-size: 14px; }
+
+/* ============================================================
+   PILLS / CTA
+   ============================================================ */
+
 .pills{
   display: flex;
   flex-wrap: wrap;
@@ -144,7 +160,10 @@ p{ color: var(--muted); line-height: 1.6; }
   flex-wrap: wrap;
 }
 
-/* BOTÕES */
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+
 .btn{
   display: inline-flex;
   align-items: center;
@@ -155,12 +174,9 @@ p{ color: var(--muted); line-height: 1.6; }
   background: rgba(255,255,255,.05);
   font-size: 14px;
   color: var(--text);
-
-  /* ✅ ADICIONADO (do CSS antigo): transição completa */
   transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
 }
 
-/* ✅ ADICIONADO (do CSS antigo): brilho + elevação no hover */
 .btn:hover{
   background: rgba(255,255,255,.10);
   border-color: rgba(74,163,255,.45);
@@ -170,7 +186,6 @@ p{ color: var(--muted); line-height: 1.6; }
   transform: translateY(-1px);
 }
 
-/* ✅ ADICIONADO (do CSS antigo): foco ao usar TAB */
 .btn:focus-visible{
   outline: none;
   box-shadow: 0 0 0 4px rgba(74,163,255,.22);
@@ -182,15 +197,17 @@ p{ color: var(--muted); line-height: 1.6; }
   border-color: rgba(74,163,255,.35);
 }
 
-/* CARDS */
+/* ============================================================
+   CARDS
+   ============================================================ */
 
 .card{
   background: rgba(255,255,255,.04);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px;
-
   transition:
+    transform .18s ease,
     background .15s ease,
     border-color .15s ease,
     box-shadow .15s ease;
@@ -202,8 +219,12 @@ p{ color: var(--muted); line-height: 1.6; }
   box-shadow:
     0 0 0 2px rgba(74,163,255,.10),
     0 6px 18px rgba(0,0,0,.25);
+  transform: translateY(-4px);
 }
 
+/* ============================================================
+   AVATAR / IMAGENS
+   ============================================================ */
 
 .avatar{
   width: 100%;
@@ -218,7 +239,18 @@ p{ color: var(--muted); line-height: 1.6; }
   object-fit: cover;
 }
 
-/* GRID */
+.experience-img{
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 12px 0;
+  display: block;
+}
+
+/* ============================================================
+   GRIDS
+   ============================================================ */
+
 .grid-2{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -231,76 +263,29 @@ p{ color: var(--muted); line-height: 1.6; }
   gap: 18px;
 }
 
-/* TEXTO */
-.kicker{
-  color: var(--accent);
-  font-weight: 700;
-  letter-spacing: .12em;
-  font-size: 12px;
-  text-transform: uppercase;
-}
-
-.small{ font-size: 14px; }
-
-/* IMAGENS DAS EXPERIÊNCIAS */
-.experience-img{
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  margin: 12px 0;
-  display: block;
-}
-
-/* FOOTER */
-.footer{
-  padding: 26px 0 44px;
-  border-top: 1px solid var(--border);
-  font-size: 14px;
-  color: var(--muted);
-}
-
-/* RESPONSIVO */
-@media (max-width: 900px){
-  .hero-grid,
-  .grid-2,
-  .grid-3{
-    grid-template-columns: 1fr;
-  }
-}
-
 /* ============================================================
-   EXPERIÊNCIAS — CARROSSEL SOFT (DESKTOP) + STACK (MOBILE)
-   Cole no final do style.css
+   EXPERIÊNCIAS — CARROSSEL + SETAS
    ============================================================ */
+
+#experiencias{
+  position: relative;
+}
 
 #experiencias .exp-carousel{
   display: flex;
   gap: 18px;
   overflow-x: auto;
-  padding-bottom: 10px;
-
+  padding-bottom: 14px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 }
 
 #experiencias .exp-carousel > .card{
-  flex: 0 0 calc((100% - 18px) / 2); /* 2 cards visíveis no desktop */
+  flex: 0 0 calc((100% - 18px) / 2);
   scroll-snap-align: start;
-
-  /* lift hover */
-  transition:
-    transform .18s ease,
-    background .15s ease,
-    border-color .15s ease,
-    box-shadow .15s ease;
-  will-change: transform;
 }
 
-#experiencias .exp-carousel > .card:hover{
-  transform: translateY(-6px);
-}
-
-/* Barra de scroll mais discreta (Chrome/Edge/Safari) */
+/* Scrollbar discreta */
 #experiencias .exp-carousel::-webkit-scrollbar{
   height: 10px;
 }
@@ -309,33 +294,81 @@ p{ color: var(--muted); line-height: 1.6; }
   border-radius: 999px;
 }
 #experiencias .exp-carousel::-webkit-scrollbar-thumb{
-  background: rgba(255,255,255,.16);
+  background: rgba(255,255,255,.18);
   border-radius: 999px;
-  border: 2px solid rgba(255,255,255,.05);
-}
-#experiencias .exp-carousel::-webkit-scrollbar-thumb:hover{
-  background: rgba(255,255,255,.22);
 }
 
-/* Acessibilidade: foco via TAB também dá “lift” */
-#experiencias .exp-carousel > .card:focus-within{
-  transform: translateY(-4px);
-  box-shadow: 0 0 0 4px rgba(74,163,255,.18);
-  border-color: rgba(74,163,255,.40);
+/* Setas */
+.exp-arrow{
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: rgba(15,22,35,.85);
+  border: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+
+  transition:
+    background .15s ease,
+    border-color .15s ease,
+    transform .15s ease,
+    box-shadow .15s ease;
 }
 
-/* RESPONSIVO: no mobile vira stack normal */
+.exp-arrow:hover{
+  background: rgba(255,255,255,.08);
+  border-color: rgba(74,163,255,.45);
+  box-shadow:
+    0 0 0 3px rgba(74,163,255,.18),
+    0 6px 18px rgba(0,0,0,.25);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.exp-arrow.left{ left: -22px; }
+.exp-arrow.right{ right: -22px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer{
+  padding: 26px 0 44px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+
 @media (max-width: 900px){
+  .hero-grid,
+  .grid-2,
+  .grid-3{
+    grid-template-columns: 1fr;
+  }
+
   #experiencias .exp-carousel{
     display: grid;
     grid-template-columns: 1fr;
     overflow: visible;
-    padding-bottom: 0;
   }
 
   #experiencias .exp-carousel > .card{
     flex: initial;
-    transform: none;
+  }
+
+  .exp-arrow{
+    display: none;
   }
 }
-
