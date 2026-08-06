@@ -1,19 +1,17 @@
 :root{
   --bg: #0b0f17;
-  --panel: #0f1623;
+  --panel: #101826;
+  --panel-strong: #121d2d;
   --text: #e7eefc;
-  --muted: #a7b4cc;
+  --muted: #aab7ce;
+  --soft: #d8e3f4;
   --accent: #4aa3ff;
-  --border: rgba(255,255,255,.10);
-
+  --accent-2: #6ee7b7;
+  --border: rgba(255,255,255,.11);
+  --shadow: 0 18px 48px rgba(0,0,0,.28);
   --max: 1180px;
-  --radius: 18px;
+  --radius: 16px;
 }
-
-
-/* ============================================================
-   CONFIGURAÇÕES GERAIS
-============================================================ */
 
 *{
   box-sizing: border-box;
@@ -24,31 +22,20 @@ html{
 }
 
 body{
+  min-width: 0;
   margin: 0;
-
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Arial,
-    sans-serif;
-
-  background:
-    radial-gradient(
-      1200px 600px at 20% 10%,
-      rgba(74,163,255,.18),
-      transparent 60%
-    ),
-    radial-gradient(
-      900px 500px at 80% 20%,
-      rgba(160,90,255,.14),
-      transparent 55%
-    ),
-    var(--bg);
-
+  overflow-x: hidden;
   color: var(--text);
+  background:
+    radial-gradient(900px 520px at 18% 6%, rgba(74,163,255,.17), transparent 62%),
+    radial-gradient(760px 460px at 86% 14%, rgba(110,231,183,.10), transparent 58%),
+    linear-gradient(180deg, #0b0f17 0%, #0d1320 52%, #090d14 100%);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body::selection{
+  color: #07101d;
+  background: var(--accent-2);
 }
 
 a{
@@ -58,10 +45,11 @@ a{
 
 p{
   color: var(--muted);
-  line-height: 1.65;
+  line-height: 1.68;
 }
 
 img{
+  display: block;
   max-width: 100%;
 }
 
@@ -70,124 +58,124 @@ a{
   -webkit-tap-highlight-color: transparent;
 }
 
-.container{
-  width: min(
-    var(--max),
-    calc(100% - 40px)
-  );
+button{
+  font: inherit;
+}
 
+:focus-visible{
+  outline: 3px solid rgba(74,163,255,.65);
+  outline-offset: 3px;
+}
+
+.container{
+  width: min(var(--max), calc(100% - 40px));
   margin: 0 auto;
 }
 
+.skip-link{
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 999;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: #07101d;
+  background: var(--accent-2);
+  font-weight: 700;
+  transform: translateY(-160%);
+  transition: transform .15s ease;
+}
 
-/* ============================================================
-   NAVEGAÇÃO
-============================================================ */
+.skip-link:focus{
+  transform: translateY(0);
+}
 
 .nav{
   position: sticky;
   top: 0;
-
   z-index: 100;
-
-  background: rgba(11,15,23,.76);
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
   border-bottom: 1px solid var(--border);
+  background: rgba(11,15,23,.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .nav-inner{
   min-height: 66px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 24px;
 }
 
 .brand{
   display: flex;
   align-items: center;
-
   gap: 10px;
-
   color: var(--text);
-
-  font-weight: 700;
+  font-weight: 800;
   white-space: nowrap;
 }
 
 .badge{
   width: 36px;
   height: 36px;
-
   display: grid;
   place-items: center;
-
-  border: 1px solid rgba(74,163,255,.35);
+  border: 1px solid rgba(74,163,255,.38);
   border-radius: 10px;
-
-  background: rgba(74,163,255,.18);
-
+  background: rgba(74,163,255,.16);
   color: var(--accent);
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .menu{
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
-  gap: 6px;
-
+  gap: 4px;
   flex-wrap: wrap;
 }
 
 .menu a{
-  padding: 8px 11px;
-
+  padding: 8px 10px;
   border-radius: 10px;
-
   color: var(--muted);
-
   font-size: 14px;
-
-  transition:
-    color .15s ease,
-    background .15s ease,
-    box-shadow .15s ease;
+  transition: color .15s ease, background .15s ease, box-shadow .15s ease;
 }
 
-.menu a:hover{
+.menu a:hover,
+.menu a:focus-visible{
   color: var(--text);
-
   background: rgba(255,255,255,.08);
-
-  box-shadow:
-    0 0 0 3px rgba(74,163,255,.12);
+  box-shadow: 0 0 0 3px rgba(74,163,255,.12);
 }
-
-
-/* ============================================================
-   SEÇÕES
-============================================================ */
 
 .section{
-  padding: 88px 0;
+  padding: 84px 0;
+  scroll-margin-top: 86px;
+}
 
-  scroll-margin-top: 82px;
+.section-heading{
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 24px;
+}
+
+.section-note{
+  max-width: 430px;
+  margin: 0 0 18px;
+  font-size: 14px;
 }
 
 .kicker{
   margin-bottom: 8px;
-
   color: var(--accent);
-
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: .12em;
   text-transform: uppercase;
 }
@@ -199,98 +187,64 @@ h3{
 }
 
 .h1{
+  max-width: 760px;
   margin: 0 0 16px;
-
-  font-size: clamp(42px, 5vw, 68px);
+  font-size: clamp(44px, 5vw, 66px);
   line-height: 1;
-  letter-spacing: -.045em;
 }
 
 .h2{
   margin: 0 0 18px;
-
-  font-size: clamp(26px, 3vw, 34px);
-  line-height: 1.2;
-  letter-spacing: -.02em;
+  font-size: clamp(27px, 3vw, 36px);
+  line-height: 1.16;
 }
 
 h3{
   margin: 0;
-
-  line-height: 1.3;
+  line-height: 1.28;
 }
 
 .lead{
   font-size: 16px;
-  line-height: 1.75;
 }
 
 .small{
   font-size: 14px;
 }
 
-
-/* ============================================================
-   HERO
-============================================================ */
-
 .hero{
-  padding-top: 0;
-}
-
-.hero .section{
-  padding-top: 64px;
-  padding-bottom: 74px;
+  padding-top: 58px;
+  padding-bottom: 72px;
 }
 
 .hero-grid{
-  min-height: calc(100vh - 66px);
-
+  min-height: calc(100vh - 150px);
   display: grid;
-
-  grid-template-columns:
-    minmax(0, 1.42fr)
-    minmax(320px, .78fr);
-
-  gap: 76px;
-
+  grid-template-columns: minmax(0, 1.36fr) minmax(300px, .84fr);
+  gap: 72px;
   align-items: center;
 }
 
 .hero-content{
   width: 100%;
-  max-width: 740px;
-}
-
-.hero .h1{
-  max-width: 720px;
-
-  margin-bottom: 14px;
-
-  font-size: clamp(48px, 5vw, 68px);
-  line-height: .98;
+  max-width: 760px;
 }
 
 .hero-subtitle{
-  max-width: 720px;
-
+  max-width: 760px;
   margin: 0 0 24px;
-
-  font-size: clamp(22px, 2.3vw, 30px);
-  line-height: 1.3;
-  font-weight: 700;
-  letter-spacing: -.025em;
+  color: var(--soft);
+  font-size: clamp(21px, 2.2vw, 29px);
+  line-height: 1.32;
+  font-weight: 750;
 }
 
 .hero-description{
-  max-width: 690px;
+  max-width: 705px;
 }
 
 .hero-description p{
-  margin: 0 0 22px;
-
-  font-size: 16px;
-  line-height: 1.72;
+  margin: 0 0 18px;
 }
 
 .hero-description p:last-child{
@@ -300,349 +254,223 @@ h3{
 .hero-profile{
   width: 100%;
   max-width: 380px;
-
   margin-left: auto;
-  padding: 18px;
-
-  border-radius: 22px;
-}
-
-.hero-profile:hover{
-  transform: translateY(-2px);
+  padding: 16px;
+  border-radius: 20px;
 }
 
 .avatar{
   width: 100%;
-
   aspect-ratio: 4 / 4.25;
-
   overflow: hidden;
-
-  border-radius: 20px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.04);
 }
 
 .avatar img{
-  display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
   object-position: center 24%;
 }
 
 .hero-profile .small{
-  margin: 16px 2px 2px;
-
-  font-size: 14px;
-  line-height: 1.6;
+  margin: 14px 2px 2px;
 }
-
-
-/* ============================================================
-   PILLS
-============================================================ */
 
 .pills{
   display: flex;
   flex-wrap: wrap;
-
-  gap: 10px;
-
-  margin: 24px 0 26px;
+  gap: 9px;
+  margin: 20px 0 24px;
 }
 
 .pill{
-  padding: 8px 12px;
-
+  padding: 7px 11px;
   border: 1px solid var(--border);
   border-radius: 999px;
-
-  background: rgba(255,255,255,.04);
-
-  color: var(--muted);
-
-  font-size: 13px;
+  background: rgba(255,255,255,.045);
+  color: var(--soft);
+  font-size: 12px;
   line-height: 1.2;
-
   white-space: nowrap;
 }
 
 .hero-pills{
-  max-width: 700px;
+  max-width: 720px;
 }
-
-
-/* ============================================================
-   BOTÕES
-============================================================ */
 
 .cta{
   display: flex;
   flex-wrap: wrap;
-
   gap: 12px;
 }
 
 .btn{
+  min-height: 42px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   gap: 10px;
-
-  padding: 11px 16px;
-
+  padding: 10px 15px;
   border: 1px solid var(--border);
   border-radius: 12px;
-
-  background: rgba(255,255,255,.05);
-
+  background: rgba(255,255,255,.055);
   color: var(--text);
-
   font-size: 14px;
-
-  transition:
-    transform .15s ease,
-    background .15s ease,
-    border-color .15s ease,
-    box-shadow .15s ease;
+  font-weight: 650;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
 }
 
 .btn:hover{
+  border-color: rgba(74,163,255,.46);
   background: rgba(255,255,255,.10);
-
-  border-color: rgba(74,163,255,.45);
-
-  box-shadow:
-    0 0 0 3px rgba(74,163,255,.14),
-    0 8px 24px rgba(74,163,255,.15);
-
+  box-shadow: 0 0 0 3px rgba(74,163,255,.14), 0 8px 24px rgba(0,0,0,.22);
   transform: translateY(-1px);
 }
 
-.btn:focus-visible{
-  outline: none;
-
-  border-color: rgba(74,163,255,.45);
-
-  box-shadow:
-    0 0 0 4px rgba(74,163,255,.22);
-}
-
 .btn.primary{
+  border-color: rgba(74,163,255,.40);
   background: rgba(74,163,255,.18);
-  border-color: rgba(74,163,255,.35);
 }
-
-.hero .cta .btn{
-  min-width: 106px;
-}
-
-
-/* ============================================================
-   CARDS
-============================================================ */
 
 .card{
-  padding: 20px;
-
   border: 1px solid var(--border);
   border-radius: var(--radius);
-
-  background: rgba(255,255,255,.04);
-
-  transition:
-    transform .18s ease,
-    background .15s ease,
-    border-color .15s ease,
-    box-shadow .15s ease;
+  background: rgba(255,255,255,.045);
+  box-shadow: 0 1px 0 rgba(255,255,255,.035);
+  transition: transform .18s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
 }
 
 .card:hover{
+  border-color: rgba(74,163,255,.28);
   background: rgba(255,255,255,.06);
-
-  border-color: rgba(74,163,255,.30);
-
-  box-shadow:
-    0 0 0 2px rgba(74,163,255,.10),
-    0 6px 18px rgba(0,0,0,.25);
-
-  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  transform: translateY(-3px);
 }
 
-.card p:first-child{
-  margin-top: 0;
+.about-card,
+.area-card,
+.skill-group,
+.contact-card,
+.contact-links{
+  padding: 20px;
 }
 
-.card p:last-child{
+.about-card p:last-child,
+.area-card p:last-child,
+.contact-card p:last-child{
   margin-bottom: 0;
 }
 
-.project-card{
-  display: flex;
-  flex-direction: column;
-
-  align-items: flex-start;
+.grid-2,
+.grid-3{
+  display: grid;
+  gap: 20px;
 }
-
-.project-card .btn{
-  margin-top: auto;
-}
-
-
-/* ============================================================
-   GRIDS
-============================================================ */
 
 .grid-2{
-  display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .grid-3{
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.projects-grid{
   display: grid;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
 
-
-/* ============================================================
-   HABILIDADES
-============================================================ */
-
-.tools-grid{
-  margin-top: 24px;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(6, minmax(0, 1fr));
-
-  gap: 18px;
-
-  justify-items: center;
-  align-items: center;
+.project-card{
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.tool-card{
-  position: relative;
+.project-image{
+  height: 210px;
+  border-bottom: 1px solid var(--border);
+  background: #101826;
+}
 
-  z-index: 1;
+.project-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-  width: 92px;
-  height: 76px;
+.project-image-photo img{
+  object-fit: contain;
+  background: #ffffff;
+}
 
+.project-placeholder{
   display: grid;
   place-items: center;
-
-  overflow: visible;
-
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 16px;
-
-  background: rgba(255,255,255,.04);
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.18);
-
-  transition:
-    transform .18s ease,
-    background .18s ease,
-    border-color .18s ease,
-    box-shadow .18s ease;
+  background:
+    linear-gradient(135deg, rgba(74,163,255,.18), rgba(110,231,183,.10)),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.055) 0 1px, transparent 1px 14px),
+    var(--panel);
 }
 
-.tool-card img{
-  width: 46px;
-  height: 46px;
-
-  object-fit: contain;
-
-  opacity: .78;
-
-  transition:
-    opacity .18s ease,
-    transform .18s ease;
-}
-
-.tool-card:hover{
-  z-index: 5;
-
-  background: rgba(255,255,255,.06);
-
-  border-color: rgba(74,163,255,.45);
-
-  box-shadow:
-    0 0 0 3px rgba(74,163,255,.14),
-    0 14px 38px rgba(0,0,0,.35);
-
-  transform: translateY(-4px);
-}
-
-.tool-card:hover img{
-  opacity: 1;
-
-  transform: scale(1.10);
-}
-
-.tool-card::after{
-  content: attr(data-label);
-
-  position: absolute;
-
-  bottom: -36px;
-  left: 50%;
-
-  z-index: 10;
-
-  padding: 6px 10px;
-
+.project-placeholder span{
+  padding: 10px 14px;
   border: 1px solid var(--border);
-  border-radius: 8px;
-
-  background: rgba(15,22,35,.97);
-
-  color: var(--text);
-
-  font-size: 12px;
-  white-space: nowrap;
-
-  opacity: 0;
-  pointer-events: none;
-
-  transform:
-    translateX(-50%)
-    translateY(6px);
-
-  transition:
-    opacity .15s ease,
-    transform .15s ease;
+  border-radius: 12px;
+  color: var(--soft);
+  background: rgba(11,15,23,.68);
+  font-weight: 800;
 }
 
-.tool-card:hover::after{
-  opacity: 1;
-
-  transform:
-    translateX(-50%)
-    translateY(0);
+.project-content{
+  flex: 1;
+  padding: 20px 20px 0;
 }
 
-.tools-description{
-  margin-top: 40px;
+.project-content .pills{
+  margin-bottom: 0;
 }
 
+.project-problem{
+  margin-top: 0;
+}
 
-/* ============================================================
-   EXPERIÊNCIAS
-============================================================ */
+.project-actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+  margin-top: auto;
+}
+
+.skills-grid{
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.skill-group h3{
+  margin-bottom: 14px;
+  font-size: 17px;
+}
+
+.skill-list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-list span{
+  padding: 7px 10px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 10px;
+  color: var(--muted);
+  background: rgba(255,255,255,.035);
+  font-size: 13px;
+}
 
 #experiencias{
   overflow: hidden;
@@ -650,74 +478,46 @@ h3{
 
 .experience-carousel-wrapper{
   position: relative;
-
   width: 100%;
-
-  margin-top: 26px;
+  margin-top: 24px;
 }
-
-
-/* Elemento que contém somente os cards */
 
 .exp-carousel{
   display: flex;
-
   gap: 20px;
-
   overflow-x: auto;
   overflow-y: hidden;
-
-  padding:
-    8px
-    4px
-    20px;
-
+  padding: 8px 4px 20px;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scrollbar-width: thin;
-
   -webkit-overflow-scrolling: touch;
 }
 
-
-/* Dois cards por vez */
-
 .exp-carousel > .experience-card{
-  flex:
-    0
-    0
-    calc((100% - 20px) / 2);
-
+  flex: 0 0 calc((100% - 20px) / 2);
   min-width: 0;
-
   scroll-snap-align: start;
 }
 
-
-/* Cards com altura semelhante */
-
 .experience-card{
+  min-height: 620px;
   display: flex;
   flex-direction: column;
-
   align-items: stretch;
-
-  min-height: 660px;
+  padding: 20px;
 }
 
 .experience-header{
-  min-height: 112px;
+  min-height: 104px;
 }
 
 .experience-type{
   display: inline-block;
-
   margin-bottom: 8px;
-
   color: var(--accent);
-
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -729,8 +529,7 @@ h3{
 .experience-list{
   margin: 6px 0 20px;
   padding-left: 22px;
-
-  color: var(--text);
+  color: var(--soft);
 }
 
 .experience-list li{
@@ -740,36 +539,25 @@ h3{
 
 .experience-action{
   margin-top: auto;
-
   align-self: flex-start;
 }
 
-
-/* ============================================================
-   LOGOS DAS EXPERIÊNCIAS
-============================================================ */
-
-.experience-logo-container{
+.experience-logo-container,
+.experience-mark{
   width: 100%;
-  height: 165px;
-
+  height: 158px;
   margin: 16px 0 20px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   overflow: hidden;
-
   border: 1px solid var(--border);
   border-radius: 14px;
 }
 
 .experience-logo-dark{
-  background: rgb(5,23,39);
-
   border-color: rgba(74,163,255,.22);
-
+  background: rgb(5,23,39);
   box-shadow:
     inset 0 0 0 1px rgba(255,255,255,.025),
     inset 0 18px 42px rgba(255,255,255,.025),
@@ -781,13 +569,9 @@ h3{
 }
 
 .experience-logo{
-  display: block;
-
   width: 86%;
   height: 110px;
-
   padding: 8px;
-
   object-fit: contain;
 }
 
@@ -795,11 +579,8 @@ h3{
   width: 58%;
   max-width: 310px;
   height: auto;
-
   padding: 0;
-
-  filter:
-    drop-shadow(0 10px 18px rgba(0,0,0,.26));
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.26));
 }
 
 .ci-digital-logo{
@@ -807,160 +588,138 @@ h3{
   height: 120px;
 }
 
-
-/* ============================================================
-   IMAGENS DAS EXPERIÊNCIAS
-============================================================ */
-
 .experience-img{
-  display: block;
-
   width: 100%;
-  height: 240px;
-
+  height: 220px;
   margin: 16px 0 20px;
-
   object-fit: cover;
-
   border-radius: 14px;
 }
 
 .experience-poster{
-  height: 390px;
-
+  height: 330px;
   object-fit: contain;
-
   background: #ffffff;
 }
 
-
-/* ============================================================
-   SETAS DO CARROSSEL
-============================================================ */
+.experience-mark{
+  color: var(--soft);
+  background:
+    linear-gradient(135deg, rgba(74,163,255,.16), rgba(110,231,183,.10)),
+    var(--panel);
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
 
 .exp-arrow{
   position: absolute;
-
   top: 50%;
-
   z-index: 40;
-
-  width: 48px;
-  height: 48px;
-
+  width: 46px;
+  height: 46px;
   display: grid;
   place-items: center;
-
   padding: 0;
-
   border: 1px solid rgba(255,255,255,.16);
   border-radius: 14px;
-
   background: rgba(15,22,35,.98);
-
   color: var(--text);
-
-  font-family: Arial, sans-serif;
   font-size: 32px;
-  font-weight: 300;
   line-height: 1;
-
   cursor: pointer;
   user-select: none;
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.40);
-
+  box-shadow: 0 10px 30px rgba(0,0,0,.40);
   transform: translateY(-50%);
-
-  transition:
-    background .15s ease,
-    border-color .15s ease,
-    transform .15s ease,
-    box-shadow .15s ease;
+  transition: opacity .15s ease, background .15s ease, border-color .15s ease, transform .15s ease;
 }
 
-.exp-arrow:hover{
-  background: rgba(74,163,255,.18);
-
+.exp-arrow:hover:not(:disabled){
   border-color: rgba(74,163,255,.55);
-
-  box-shadow:
-    0 0 0 3px rgba(74,163,255,.14),
-    0 12px 32px rgba(0,0,0,.45);
-
-  transform:
-    translateY(-50%)
-    scale(1.06);
+  background: rgba(74,163,255,.18);
+  transform: translateY(-50%) scale(1.05);
 }
 
-.exp-arrow:focus-visible{
-  outline: none;
-
-  box-shadow:
-    0 0 0 4px rgba(74,163,255,.22),
-    0 12px 32px rgba(0,0,0,.45);
+.exp-arrow:disabled{
+  opacity: .34;
+  cursor: not-allowed;
 }
-
-
-/*
-  Posições negativas:
-  colocam as setas fora da área dos cards.
-*/
 
 .exp-arrow.left{
-  left: -66px;
+  left: -64px;
 }
 
 .exp-arrow.right{
-  right: -66px;
+  right: -64px;
 }
-
-
-/* Scrollbar do carrossel */
 
 .exp-carousel::-webkit-scrollbar{
   height: 9px;
 }
 
 .exp-carousel::-webkit-scrollbar-track{
-  background: rgba(255,255,255,.05);
-
   border-radius: 999px;
+  background: rgba(255,255,255,.05);
 }
 
 .exp-carousel::-webkit-scrollbar-thumb{
-  background: rgba(255,255,255,.18);
-
   border-radius: 999px;
+  background: rgba(255,255,255,.18);
 }
 
-.exp-carousel::-webkit-scrollbar-thumb:hover{
-  background: rgba(255,255,255,.25);
+.contact-grid{
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: 20px;
 }
 
+.contact-links{
+  display: grid;
+  gap: 10px;
+  font-style: normal;
+}
 
-/* ============================================================
-   RODAPÉ
-============================================================ */
+.contact-links a{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 12px;
+  background: rgba(255,255,255,.035);
+}
+
+.contact-links span{
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.contact-links strong{
+  color: var(--soft);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
 
 .footer{
-  padding: 28px 0 44px;
-
   border-top: 1px solid var(--border);
-
+  padding: 28px 0 42px;
   color: var(--muted);
-
   font-size: 14px;
 }
 
-
-/* ============================================================
-   TELAS ATÉ 1320 PX
-============================================================ */
+.footer .container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 
 @media (max-width: 1320px){
-
   .exp-arrow.left{
     left: -24px;
   }
@@ -968,75 +727,34 @@ h3{
   .exp-arrow.right{
     right: -24px;
   }
-
 }
-
-
-/* ============================================================
-   NOTEBOOK
-============================================================ */
 
 @media (max-width: 1100px){
-
   .hero-grid{
-    grid-template-columns:
-      minmax(0, 1.2fr)
-      minmax(300px, .8fr);
-
-    gap: 48px;
+    grid-template-columns: minmax(0, 1.12fr) minmax(280px, .88fr);
+    gap: 46px;
   }
 
-  .hero .h1{
-    font-size:
-      clamp(44px, 5vw, 60px);
+  .skills-grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-
-  .hero-subtitle{
-    font-size:
-      clamp(21px, 2.4vw, 27px);
-  }
-
-  .tools-grid{
-    grid-template-columns:
-      repeat(5, minmax(0, 1fr));
-  }
-
-  .experience-card{
-    min-height: 620px;
-  }
-
-  .experience-poster{
-    height: 340px;
-  }
-
 }
 
-
-/* ============================================================
-   TABLET
-============================================================ */
-
 @media (max-width: 900px){
-
   .container{
-    width: min(
-      var(--max),
-      calc(100% - 32px)
-    );
+    width: min(var(--max), calc(100% - 32px));
   }
 
   .nav-inner{
+    min-height: auto;
     padding: 12px 0;
-
     align-items: flex-start;
     flex-direction: column;
-
     gap: 10px;
   }
 
   .menu{
     width: 100%;
-
     justify-content: flex-start;
   }
 
@@ -1045,53 +763,44 @@ h3{
   }
 
   .section{
-    padding: 70px 0;
+    padding: 68px 0;
   }
 
-  .hero .section{
-    padding-top: 52px;
-    padding-bottom: 60px;
+  .section-heading{
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .section-note{
+    margin-bottom: 0;
+  }
+
+  .hero{
+    padding-top: 48px;
+    padding-bottom: 58px;
   }
 
   .hero-grid{
     min-height: auto;
-
     grid-template-columns: 1fr;
-
-    gap: 42px;
-  }
-
-  .hero-content{
-    max-width: 100%;
+    gap: 40px;
   }
 
   .hero-profile{
     max-width: 430px;
-
     margin: 0 auto;
   }
 
   .grid-2,
-  .grid-3{
+  .grid-3,
+  .projects-grid,
+  .contact-grid{
     grid-template-columns: 1fr;
   }
 
-  .tools-grid{
-    grid-template-columns:
-      repeat(4, minmax(0, 1fr));
-  }
-
-
-  /*
-    No tablet ainda mantemos o carrossel,
-    mas exibimos um card por vez.
-  */
-
-  .exp-carousel{
-    padding:
-      8px
-      4px
-      20px;
+  .skills-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .exp-carousel > .experience-card{
@@ -1111,33 +820,22 @@ h3{
   }
 
   .exp-arrow{
-    width: 44px;
-    height: 44px;
-
+    width: 42px;
+    height: 42px;
     background: rgba(15,22,35,.96);
   }
-
 }
 
-
-/* ============================================================
-   CELULAR
-============================================================ */
-
 @media (max-width: 620px){
-
   .container{
-    width: min(
-      var(--max),
-      calc(100% - 24px)
-    );
+    width: min(var(--max), calc(100% - 24px));
   }
 
   .nav{
     position: relative;
   }
 
-  .brand span{
+  .brand span:last-child{
     font-size: 15px;
   }
 
@@ -1147,178 +845,100 @@ h3{
 
   .menu a{
     padding: 7px 8px;
-
     font-size: 12px;
   }
 
   .section{
-    padding: 58px 0;
+    padding: 56px 0;
   }
 
-  .hero .section{
-    padding-top: 38px;
-    padding-bottom: 48px;
+  .hero{
+    padding-top: 36px;
+    padding-bottom: 46px;
   }
 
-  .hero .h1{
-    font-size:
-      clamp(39px, 12vw, 50px);
-
-    line-height: 1.02;
+  .h1{
+    font-size: clamp(38px, 12vw, 50px);
   }
 
   .hero-subtitle{
-    margin-bottom: 20px;
-
     font-size: 20px;
-    line-height: 1.35;
   }
 
   .hero-description p{
     font-size: 15px;
-    line-height: 1.7;
   }
 
-  .hero-pills{
-    gap: 8px;
-  }
-
-  .pill{
-    padding: 7px 11px;
-
-    font-size: 12px;
-  }
-
-  .cta{
+  .cta,
+  .project-actions{
     display: grid;
-
     grid-template-columns: 1fr;
-
     width: 100%;
   }
 
-  .cta .btn{
+  .btn{
     width: 100%;
   }
 
-  .hero-profile{
-    padding: 14px;
-
-    border-radius: 18px;
+  .skills-grid{
+    grid-template-columns: 1fr;
   }
 
-  .avatar{
-    border-radius: 16px;
+  .project-image{
+    height: 180px;
   }
 
-  .h2{
-    font-size: 27px;
-  }
-
-  .card{
-    padding: 17px;
-  }
-
-  .tools-grid{
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr));
-
-    gap: 15px 10px;
-  }
-
-  .tool-card{
-    width: 82px;
-    height: 70px;
-  }
-
-  .tool-card img{
-    width: 42px;
-    height: 42px;
-  }
-
-
-  /*
-    As setas permanecem fora do conteúdo do card,
-    mas ficam dentro da largura da tela.
-  */
-
-  .experience-carousel-wrapper{
-    padding: 0;
-  }
-
-  .exp-carousel{
-    padding-bottom: 18px;
-  }
-
-  .exp-arrow{
-    top: 50%;
-
-    width: 40px;
-    height: 40px;
-
-    font-size: 27px;
-  }
-
-  .exp-arrow.left{
-    left: 5px;
-  }
-
-  .exp-arrow.right{
-    right: 5px;
-  }
-
-  .experience-header{
-    min-height: auto;
-  }
-
-  .experience-logo-container{
-    height: 135px;
-  }
-
-  .experience-logo{
-    height: 90px;
-  }
-
-  .ci-digital-logo{
-    height: 100px;
+  .experience-logo-container,
+  .experience-mark{
+    height: 132px;
   }
 
   .experience-img{
-    height: 210px;
+    height: 205px;
   }
 
   .experience-poster{
-    height: 320px;
+    height: 300px;
   }
 
+  .contact-links a{
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
 }
 
-
-/* ============================================================
-   CELULAR PEQUENO
-============================================================ */
-
 @media (max-width: 390px){
-
   .menu a{
     font-size: 11px;
   }
 
-  .hero .h1{
-    font-size: 38px;
+  .h1{
+    font-size: 36px;
   }
 
   .hero-subtitle{
     font-size: 18px;
   }
 
-  .tools-grid{
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-  }
-
   .experience-poster{
-    height: 280px;
+    height: 260px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,
+  *::before,
+  *::after{
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
   }
 
+  .card:hover,
+  .btn:hover,
+  .exp-arrow:hover:not(:disabled){
+    transform: none;
+  }
 }
