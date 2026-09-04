@@ -431,6 +431,12 @@ h3{
   overflow: hidden;
 }
 
+.project-card-featured{
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(280px, .92fr) minmax(0, 1.08fr);
+}
+
 .project-image{
   height: 210px;
   border-bottom: 1px solid var(--border);
@@ -446,6 +452,18 @@ h3{
 .project-image-photo img{
   object-fit: contain;
   background: #ffffff;
+}
+
+.project-image-critical{
+  height: auto;
+  min-height: 380px;
+  border-right: 1px solid var(--border);
+  border-bottom: 0;
+  background: #0e1724;
+}
+
+.project-image-critical img{
+  object-position: center 58%;
 }
 
 .project-placeholder{
@@ -471,12 +489,41 @@ h3{
   padding: 20px 20px 0;
 }
 
+.project-content-featured{
+  padding: 26px;
+}
+
+.project-label{
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border: 1px solid rgba(74,163,255,.22);
+  border-radius: 999px;
+  color: var(--accent);
+  background: rgba(74,163,255,.08);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
 .project-content .pills{
   margin-bottom: 0;
 }
 
 .project-problem{
   margin-top: 0;
+}
+
+.project-impact-list{
+  margin: 0 0 18px;
+  padding-left: 20px;
+  color: var(--soft);
+}
+
+.project-impact-list li{
+  margin-bottom: 6px;
+  line-height: 1.5;
 }
 
 .project-actions{
@@ -894,6 +941,17 @@ h3{
     grid-template-columns: 1fr;
   }
 
+  .project-card-featured{
+    grid-template-columns: 1fr;
+  }
+
+  .project-image-critical{
+    height: 280px;
+    min-height: 280px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
   .tools-grid{
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -1010,6 +1068,15 @@ h3{
 
   .project-image{
     height: 180px;
+  }
+
+  .project-image-critical{
+    height: 220px;
+    min-height: 220px;
+  }
+
+  .project-content-featured{
+    padding: 20px;
   }
 
   .experience-logo-container{
