@@ -421,11 +421,11 @@ h3{
 .projects-grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
   gap: 20px;
 }
 
 .project-card{
-  min-height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
