@@ -455,10 +455,17 @@ h3{
 .project-image-critical{
   height: 210px;
   border-bottom: 1px solid var(--border);
-  background: #0e1724;
+  padding: 8px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.018)),
+    #0e1724;
 }
 
 .project-image-critical img{
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 8px;
+  box-shadow: 0 14px 34px rgba(0,0,0,.32);
   object-position: center 50%;
 }
 
