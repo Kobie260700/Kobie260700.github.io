@@ -650,7 +650,7 @@ h3{
   padding: 8px 4px 20px;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  scrollbar-width: thin;
+  scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -803,17 +803,7 @@ h3{
 }
 
 .exp-carousel::-webkit-scrollbar{
-  height: 9px;
-}
-
-.exp-carousel::-webkit-scrollbar-track{
-  border-radius: 999px;
-  background: rgba(255,255,255,.05);
-}
-
-.exp-carousel::-webkit-scrollbar-thumb{
-  border-radius: 999px;
-  background: rgba(255,255,255,.18);
+  display: none;
 }
 
 .contact-grid{
