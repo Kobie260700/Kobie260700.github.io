@@ -10,6 +10,20 @@ O projeto foi desenvolvido para centralizar informações de supervisão, regist
 
 A solução já funciona em várias empresas. Sua utilização depende das características de cada instalação e da atuação dos profissionais responsáveis pelo sistema.
 
+## Estrutura física e responsabilidade técnica
+
+As imagens mostram uma instalação relacionada ao projeto e ajudam a visualizar a escala do ambiente supervisionado: um reservatório com mais de 10 metros de altura e um conjunto de bombas que podem operar simultaneamente. São equipamentos vinculados a um sistema de proteção contra incêndio, em que a supervisão, o registro de eventos e os comandos de teste exigem cuidado com as condições reais de operação.
+
+<img src="reservatorio.jpeg" alt="Reservatório elevado e estrutura externa do sistema de combate a incêndio" width="420">
+
+*Reservatório elevado e estrutura da instalação.*
+
+<img src="conjunto-bombas.jpeg" alt="Conjunto de bombas, tubulações e instrumentos do sistema de combate a incêndio" width="420">
+
+*Conjunto de bombas e tubulações do sistema.*
+
+O desenvolvimento do software envolve interpretar requisitos de engenharia, acompanhar condições e estados dos equipamentos e validar a integração com os responsáveis técnicos. As imagens ilustram o contexto físico; por si só, não demonstram o funcionamento ou a validação de uma instalação específica.
+
 ## Visão geral da solução
 
 A aplicação reúne interface web, backend, banco de dados e integração com uma camada de automação industrial. Entre suas funcionalidades estão:
