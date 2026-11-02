@@ -54,7 +54,12 @@ A ampliação de memória foi uma decisão para aquele equipamento e cenário; o
 
 ### Apoio após a instalação
 
-Ao final do dia, por volta da meia-noite, Átila entrou em contato porque o Datacamp, sistema utilizado pelo estabelecimento para emissão de notas, havia parado de funcionar. A causa da interrupção não foi identificada. Prestei apoio para restabelecer o Datacamp e, após o atendimento, os sistemas estavam funcionando.
+Ao final do dia, por volta da meia-noite, Átila entrou em contato porque a aplicação NFC-e/DataCamp, utilizada pelo estabelecimento para emissão de notas, havia parado de funcionar. Na análise, identifiquei que a base de dados local estava indisponível porque os serviços do Firebird estavam parados:
+
+- **Firebird Guardian - DefaultInstance:** parado, embora configurado para inicialização automática.
+- **Firebird Server - DefaultInstance:** parado e configurado para inicialização manual.
+
+Ao iniciar o serviço `FirebirdGuardianDefaultInstance`, os dois serviços voltaram a ficar ativos e a aplicação pôde acessar novamente a base local. Após o atendimento, os sistemas estavam funcionando.
 
 Essa experiência reforçou a importância de acompanhar a entrega no ambiente real, investigar dificuldades de infraestrutura e apoiar a continuidade da operação do cliente. O atendimento ao Datacamp foi uma demanda adicional à instalação da aplicação desenvolvida para a Adega Summer.
 
