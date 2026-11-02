@@ -78,6 +78,20 @@ Em ambiente local, foram realizados:
 
 Os testes com simulador ajudam a verificar a comunicação e o comportamento da aplicação em laboratório. A integração com equipamentos reais deve ser avaliada de acordo com as condições e os procedimentos de cada instalação.
 
+## Casos técnicos de validação
+
+### Divergência entre pressão física e telemetria
+
+Durante a validação de uma instalação, identifiquei uma diferença entre a pressão indicada no instrumento físico e o valor mostrado pela aplicação. Investiguei o caminho do dado desde o sensor até a interface, comparando a referência física com os dados recebidos nas etapas de integração e supervisão.
+
+A divergência já estava presente na entrada da camada de automação e foi direcionada ao sensor de pressão. O caso destacou a importância de rastrear o sinal entre campo, integração e aplicação antes de atribuir a inconsistência ao software.
+
+### Confirmação de estados entre etapas de teste
+
+Em testes de sequência, observei uma transição em que uma bomba poderia iniciar antes da confirmação de desligamento da anterior. Para evitar que uma solicitação de comando fosse tratada como confirmação de uma mudança física, trabalhei na validação do retorno do equipamento antes da liberação da etapa seguinte.
+
+A lógica considera a validade e atualidade da informação e prevê o bloqueio da sequência e o registro de ocorrência quando a confirmação esperada não chega. O caso reforçou a importância de verificar o retorno do campo em sistemas de automação que interagem com equipamentos físicos.
+
 ## Situação atual
 
 A solução está em funcionamento em várias empresas e apoia atividades de acompanhamento e teste dos sistemas instalados.
