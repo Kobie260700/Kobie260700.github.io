@@ -2,7 +2,7 @@
 
 Sistema de gestão local desenvolvido para apoiar a operação de uma adega, reunindo vendas, estoque, controle de caixa e acompanhamento administrativo em uma única aplicação.
 
-> Projeto preparado para instalação controlada. A operação definitiva em produção ainda não foi confirmada.
+> Aplicação instalada no ambiente do cliente e executada após os ajustes de infraestrutura e instalação.
 
 ## Problema
 
@@ -33,8 +33,33 @@ O desenvolvimento priorizou consistência de dados e segurança operacional em c
 
 O estoque é centralizado por produto, com regras para evitar saldo negativo e inconsistências em vendas, consumação e cancelamentos.
 
+## Instalação e entrega no cliente
+
+A entrega envolveu adaptar a aplicação e seu ambiente de execução ao computador utilizado pela equipe da Adega Summer. O estabelecimento tem uma rotina intensa de vendas, tornando a organização das operações e o funcionamento dos sistemas importantes para o atendimento diário.
+
+O proprietário, Átila, confiou no meu trabalho para desenvolver e instalar a solução. Durante a visita, além de instalar a aplicação, acompanhei a preparação do computador para que ele estivesse em condições de executá-la.
+
+<img src="instalacao-adega.jpeg" alt="Guilherme e Átila na Adega Summer após a instalação do sistema" width="420">
+
+*Registro com Átila na Adega Summer após a instalação.*
+
+### Preparação do ambiente
+
+- Avaliei o computador que receberia a aplicação e os recursos disponíveis para executar os serviços em Docker.
+- A máquina tinha 8 GB de memória RAM. Na minha avaliação técnica, ampliar a memória ajudaria a preparar o ambiente; instalamos um módulo adicional de 16 GB.
+- Durante a instalação, encontrei problemas relacionados ao WSL. Investiguei o ambiente e realizei atualizações e ajustes necessários para executar a solução.
+- Após os ajustes, concluí a instalação e confirmei que o sistema estava funcionando naquele momento.
+
+A ampliação de memória foi uma decisão para aquele equipamento e cenário; os problemas encontrados no WSL não foram atribuídos a uma causa específica.
+
+### Apoio após a instalação
+
+Ao final do dia, por volta da meia-noite, Átila entrou em contato porque o Datacamp, sistema utilizado pelo estabelecimento para emissão de notas, havia parado de funcionar. A causa da interrupção não foi identificada. Prestei apoio para restabelecer o Datacamp e, após o atendimento, os sistemas estavam funcionando.
+
+Essa experiência reforçou a importância de acompanhar a entrega no ambiente real, investigar dificuldades de infraestrutura e apoiar a continuidade da operação do cliente. O atendimento ao Datacamp foi uma demanda adicional à instalação da aplicação desenvolvida para a Adega Summer.
+
 ## Status
 
-A aplicação está tecnicamente preparada para instalação controlada em ambiente local. A operação definitiva depende da instalação no cliente e da validação prática da rede e dos dispositivos utilizados pela equipe.
+A aplicação foi instalada no computador do cliente e funcionou após os ajustes de ambiente. A experiência descrita registra a entrega e a verificação naquele momento; não apresenta métricas de disponibilidade ou resultados de operação contínua.
 
 Projeto de engenharia de software desenvolvido para atender às necessidades de um negócio real, com foco em consistência de dados, manutenção e confiabilidade operacional.
