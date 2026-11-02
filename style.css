@@ -718,6 +718,34 @@ h3{
   align-self: flex-start;
 }
 
+.research-presentation{
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 0 0 20px;
+}
+
+.research-presentation img{
+  width: 110px;
+  height: 70px;
+  flex: 0 0 110px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.research-presentation h4{
+  margin: 0 0 8px;
+}
+
+.research-presentation p{
+  margin: 0;
+}
+
+@media (max-width: 480px){
+  .research-presentation{ flex-direction: column; }
+  .research-presentation img{ flex-basis: auto; }
+}
+
 .experience-logo-container{
   width: 100%;
   height: 158px;
