@@ -82,15 +82,34 @@ Os testes com simulador ajudam a verificar a comunicação e o comportamento da 
 
 ### Divergência entre pressão física e telemetria
 
-Durante a validação de uma instalação, identifiquei uma diferença entre a pressão indicada no instrumento físico e o valor mostrado pela aplicação. Investiguei o caminho do dado desde o sensor até a interface, comparando a referência física com os dados recebidos nas etapas de integração e supervisão.
+Durante a validação de uma instalação, identifiquei uma divergência entre a pressão indicada no manômetro da linha e o valor apresentado pela aplicação. Como a leitura passava por várias camadas, investiguei hipóteses que incluíam a conversão do sinal analógico, sua normalização no Node-RED, a interpretação na comunicação industrial e a apresentação no software.
 
-A divergência já estava presente na entrada da camada de automação e foi direcionada ao sensor de pressão. O caso destacou a importância de rastrear o sinal entre campo, integração e aplicação antes de atribuir a inconsistência ao software.
+Para localizar a origem da diferença, acompanhei o caminho completo da informação:
+
+```text
+Transmissor de pressão → entrada analógica da automação → Node-RED
+→ comunicação industrial → backend → interface de supervisão
+```
+
+Comparei a referência do manômetro com o sinal recebido na entrada analógica e com o valor disponibilizado para a aplicação. Também verifiquei escala, unidade de engenharia, validade da leitura e continuidade da atualização do dado.
+
+**Resultado:** a divergência já estava presente na entrada da camada de automação. A normalização e a aplicação propagavam uma leitura inconsistente recebida do campo; a investigação foi direcionada ao sensor de pressão. O caso mostrou a importância de rastrear o sinal entre campo, automação e aplicação antes de atribuir uma inconsistência ao software.
 
 ### Confirmação de estados entre etapas de teste
 
-Em testes de sequência, observei uma transição em que uma bomba poderia iniciar antes da confirmação de desligamento da anterior. Para evitar que uma solicitação de comando fosse tratada como confirmação de uma mudança física, trabalhei na validação do retorno do equipamento antes da liberação da etapa seguinte.
+Em testes de sequência, observei que a bomba elétrica poderia iniciar antes da confirmação do desligamento da bomba diesel. A operação simultânea fora da estratégia prevista poderia elevar indevidamente a pressão e afetar a rede hidráulica e os equipamentos associados.
 
-A lógica considera a validade e atualidade da informação e prevê o bloqueio da sequência e o registro de ocorrência quando a confirmação esperada não chega. O caso reforçou a importância de verificar o retorno do campo em sistemas de automação que interagem com equipamentos físicos.
+A decisão técnica foi separar **comando** de **confirmação**: um pulso registra uma solicitação, mas não comprova que o equipamento concluiu a transição física. Por isso, foi adicionada uma camada de confirmação que considera:
+
+- O retorno digital do estado da bomba;
+- O heartbeat de comunicação, para avaliar se a leitura está atualizada;
+- A validade do dado recebido pela camada de automação;
+- Uma janela de estabilização antes de liberar a etapa seguinte;
+- O bloqueio da sequência e o registro de ocorrência se a confirmação não chegar dentro do tempo configurado.
+
+Com essa lógica, a próxima etapa depende de uma confirmação válida e atual de encerramento da anterior. Se o retorno permanecer ativo, estiver indisponível ou a comunicação estiver desatualizada, a rotina permanece bloqueada e segue a estratégia de interrupção e registro definida para a instalação.
+
+Esse caso reforçou um princípio essencial na integração com equipamentos físicos: **enviar um comando não é o mesmo que confirmar sua execução**.
 
 ## Situação atual
 
