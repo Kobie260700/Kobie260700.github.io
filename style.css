@@ -415,6 +415,11 @@ h3{
   border-radius: 8px;
 }
 
+.case-image-physical{
+  object-fit: cover;
+  object-position: center 30%;
+}
+
 .grid-2,
 .grid-3{
   display: grid;
